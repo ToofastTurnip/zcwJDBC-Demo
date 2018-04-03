@@ -12,6 +12,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+/**
+ * Created by leon on 3/13/18.
+ */
 public enum Database {
     POKEMON(new ConnectionBuilder()
             .setUrl("jdbc:mariadb://localhost/")
@@ -31,8 +34,9 @@ public enum Database {
             .setPassword("")
             .build());
 
-    static { // Attempt to register JDBC Driver
-        registerJDBCDriver();
+    static {
+        registerJDBCDriver(); // Attempt to register JDBC Driver
+        //createSchema(); // Attempt to create schema
     }
 
     private final ConnectionWrapper connectionWrapper;
@@ -64,8 +68,8 @@ public enum Database {
     }
 
     public void create() {
-        String sqlStatement = "CREATE DATABASE IF NOT EXISTS %s;";
-        statementExecutor.execute(sqlStatement, name());
+        String sqlStatement1 = "CREATE DATABASE IF NOT EXISTS %s;";
+        statementExecutor.execute(sqlStatement1, name());
     }
 
     public void use() {

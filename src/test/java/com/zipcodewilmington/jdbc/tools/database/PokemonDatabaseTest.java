@@ -19,8 +19,4 @@ public class PokemonDatabaseTest {
         Database.POKEMON.create();
     }
 
-    @Test
-    public void t() {
-
-    }
 }
